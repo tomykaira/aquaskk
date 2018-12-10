@@ -115,7 +115,7 @@
 // IMKStateSetting
 - (void)activateServer:(id)sender {
     [NSUserDefaults resetStandardUserDefaults];
-    
+
     if([self directMode]) return;
 
     [self debug:@"activateServer"];
@@ -123,6 +123,8 @@
     activated_ = YES;
 
     session_->Activate();
+
+    [self changeInputMode:@"com.apple.inputmethod.Japanese.Hiragana" ];
 }
 
 - (void)deactivateServer:(id)sender {
@@ -227,7 +229,7 @@
         } else {
             item = [NSMenuItem separatorItem];
         }
-        
+
         if(items[i].state != 0) {
             [item setState:(NSInteger)[self performSelector:items[i].state]];
 
