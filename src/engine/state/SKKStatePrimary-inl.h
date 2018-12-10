@@ -193,10 +193,6 @@ State SKKState::Hirakana(const Event& event) {
             //   - x[: 鍵括弧
             //
             // が割り当てられている
-            if(param.IsToggleKana()) {
-                return State::Transition(&SKKState::Katakana);
-            }
-
             if(param.IsToggleJisx0201Kana()) {
               return State::Transition(&SKKState::Jisx0201Kana);
             }
