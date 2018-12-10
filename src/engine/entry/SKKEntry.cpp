@@ -68,6 +68,10 @@ const std::string& SKKEntry::PromptString() const {
     return prompt_;
 }
 
+SKKEntry SKKEntry::NoOkuriEntry() const {
+    return SKKEntry(normal_entry_);
+}
+
 std::string SKKEntry::ToggleKana(SKKInputMode mode) const {
     std::string result;
 
@@ -98,7 +102,7 @@ std::string SKKEntry::ToggleJisx0201Kana(SKKInputMode mode) const {
     case HirakanaInputMode:
 	jconv::hirakana_to_jisx0201_kana(normal_entry_, result);
 	break;
-	
+
     case KatakanaInputMode:
 	jconv::katakana_to_jisx0201_kana(normal_entry_, result);
 	break;

@@ -78,7 +78,7 @@ namespace {
         unsigned minimumLength_;
         unsigned completionLimit_;
         bool needsLengthCheck_;
-        
+
     public:
         CompletionHelper(const std::string& entry, int minimumLength, int completionLimit)
             : entry_(entry), minimumLength_(minimumLength), completionLimit_(completionLimit) {
@@ -187,6 +187,10 @@ bool SKKBackEnd::Find(const SKKEntry& entry, SKKCandidateSuite& result) {
     result.Clear();
 
     std::for_each(dicts_.begin(), dicts_.end(), ApplyFind(entry, result));
+    if (entry.IsOkuriAri()) {
+        SKKEntry noOkuri = entry.NoOkuriEntry();
+        std::for_each(dicts_.begin(), dicts_.end(), ApplyFind(noOkuri, result));
+    }
 
     if(!entry.IsOkuriAri()) {
         SKKNumericConverter converter;

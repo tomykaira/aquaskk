@@ -48,6 +48,8 @@ public:
     const std::string& OkuriString() const;
     const std::string& PromptString() const;
 
+    SKKEntry NoOkuriEntry() const;
+
     std::string ToggleKana(SKKInputMode mode) const;
     std::string ToggleJisx0201Kana(SKKInputMode mode) const;
 
